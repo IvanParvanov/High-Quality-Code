@@ -1,9 +1,8 @@
 # High-Quality-Code
 Best conventions for writing high quality code
 
-Software Quality
 
-# <a id="softwarequality"></a> Software Quality
+# Software Quality
 - **External quality**
   - Does the software behave correctly?
   - Are the produced results correct?
