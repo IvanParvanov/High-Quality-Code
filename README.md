@@ -39,7 +39,7 @@ Best conventions for writing high quality code
   - Good names for classes, methods, variables, etc.
   - Self-documenting code style
    
-  # Code Conventions
+# Code Conventions
 - **Code conventions** are formal guidelines about the style of the source code:
   - Code formatting conventions
     - Indentation, whitespace, etc.
@@ -57,7 +57,7 @@ Best conventions for writing high quality code
 - High-quality code goes **beyond code conventions**
   - Software quality is a way of thinking!
 
-  # <a id="complexity"></a>Managing Complexity
+# Managing Complexity
 - **Managing complexity** has central role in software development
   - Minimize the amount of complexity that anyone’s brain has to deal with at a certain time
 - Architecture and design challenges
@@ -65,7 +65,7 @@ Best conventions for writing high quality code
 - Code construction challenges
   - Apply good software construction practices: classes, methods, variables, naming, statements, error handling, formatting, comments, etc.
    
-  # Key Characteristics of HQC
+# Key Characteristics of HQC
 - **Correct behavior**
   - Conforming to the requirements
   - Stable, no hangs, no crashes
@@ -120,7 +120,7 @@ Best conventions for writing high quality code
     - High code coverage
   - Passed code reviews and inspections  
 
-#   Code Formatting
+# Code Formatting
 ## Why do we need it? How can white spaces and parenthesis help us?
 
 ```cs
