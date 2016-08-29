@@ -33,7 +33,7 @@ Best conventions for writing high quality code
   - Good names for classes, methods, variables, etc.
   - Self-documenting code style
    
-  # <a id="conventions"></a> Code Conventions
+  # Code Conventions
 - **Code conventions** are formal guidelines about the style of the source code:
   - Code formatting conventions
     - Indentation, whitespace, etc.
@@ -115,7 +115,7 @@ Best conventions for writing high quality code
   - Passed code reviews and inspections  
 
 
-- Key to being an effective programmer:
+# Keys to being an effective programmer:
   - Maximizing the portion of a program that you can **safely ignore**
     - While working on any one section of code
   - Most practices discussed later propose ways to achieve this important goal
