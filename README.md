@@ -275,3 +275,202 @@ private List<Report> PrepareReports()
     return reports;
 }
 ```
+# Formatting Types
+- Formatting classes / structures / interfaces / enumerations
+  - Indent the class body with a single [Tab]
+  - Use the following order of definitions:
+    - Constants, delegates, inner types, fields, constructors, properties, methods
+    - Static members, public members, protected members,  internal members, private members
+  - The above order of definitions is not the only possible correct one
+
+# Formatting Types  <br /> – _Example in C#_
+
+```cs
+public class Dog
+{
+    // Static variables
+    public const string SPECIES = "Canis Lupus Familiaris";
+
+		// Instance variables
+    private int age;
+
+		// Constructors
+    public Dog(string name, int age)
+    {
+        this.Name = name;
+        this.Аge = age;
+    }
+    
+		// Properties
+    public string Name { get; set; }
+
+    // Methods
+    public void Breath()
+    {
+        // TODO: breathing process
+    }
+
+    public void Bark()
+    {
+        Console.WriteLine("wow-wow");
+    }
+}
+```
+
+# Formatting Conditional Statements and Loops
+- Formatting conditional statements and loops
+  - Always use **{ }** block after **if** / **for** / **while**, even when a single operator follows
+  - Indent the block body after **if** / **for** / **while**
+  - Always put a new line after a **if** / **for** / **while** block!
+  - Always put the **{** on the next line (in C#)
+  - Always put the **{** on the same line (in JavaScript)
+  - Never indent with more than one [Tab]
+
+## Conditional Statements and Loops Formatting <br/> – _Examples in C#_
+
+- Correct examples:
+```cs
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine("i={0}", i);
+}
+```
+
+- Incorrect examples:
+
+```cs
+for (int i = 0; i < 10; i++)
+  Console.WriteLine("i={0}", i);
+
+for (int i = 0; i < 10; i++) Console.WriteLine("i={0}", i);
+
+for (int i = 0; i < 10;) {
+    Console.WriteLine("i={0}", i);  i++; Console.WriteLine();
+}
+```
+
+## Using Empty Lines
+- Empty lines are used to separate logically unrelated parts of the source code
+  - Don't put empty lines when not needed!
+
+```cs
+public static void PrintList(List<int> ints)
+{
+    Console.Write("{ ");
+    foreach (int item in ints)
+    {
+        Console.Write(item);
+        Console.Write(" ");
+    }
+
+    Console.WriteLine("}");
+}
+
+static void Main()
+{
+    // …
+```   
+
+# Misplaced Empty Lines – _Example_
+
+```cs
+for (int i = 0; i < 10;)
+{
+    Console.WriteLine("i={0}", i);  
+
+
+
+
+
+		i++;
+
+
+		Console.WriteLine();
+}
+```
+
+## Breaking Long Lines
+- Break long lines after punctuation
+- Indent the second line by single [Tab]
+- Do not additionally indent the third line
+- _Examples_:
+
+```cs
+if (matrix[x, y] == 0 || matrix[x-1, y] == 0 ||
+    matrix[x+1, y] == 0 || matrix[x, y-1] == 0 ||
+    matrix[x, y+1] == 0)
+{ …
+
+public void GetAllAbstractPaintings()
+{
+	   var paintings = this.Database.Paintings.All()
+		 .Where(x => x.PaintingStyle == PaintingStyleType.Abstract)
+		 .OrderBy(x => x.Price)
+		 .ThenBy(x => x.DateCreated)
+		 .Select(x => x.OriginalPaintingPath)
+		 .ToList();
+}
+```  
+
+## Incorrect ways to break long lines (in C#_)
+
+```cs
+if (matrix[x, y] == 0 || matrix[x-1, y] ==
+  0 || matrix[x+1, y] == 0 || matrix[x,
+  y-1] == 0 || matrix[x, y+1] == 0)
+{ …
+```
+
+```cs
+if (matrix[x, y] == 0 || matrix[x-1, y] == 0 ||
+      matrix[x+1, y] == 0 || matrix[x, y-1] == 0 ||
+      matrix[x, y+1] == 0)
+{ …
+```
+
+```cs
+DictionaryEntry<K, V> newEntry
+  = new DictionaryEntry<K, V>(oldEntry
+  .Key, oldEntry.Value);
+```
+
+## Breaking Long Lines <br/> in C# and JavaScript
+- In C# use single [Tab] after breaking a long line:
+
+```cs
+if (matrix[x, y] == 0 || matrix[x-1, y] == 0 ||
+    matrix[x+1, y] == 0 || matrix[x, y-1] == 0 ||
+    matrix[x, y+1] == 0)
+{
+    matrix[x, y] == 1;
+}
+```
+
+- In JavaScript use double [Tab] in the carried long lines:
+
+```cs
+if (matrix[x, y] == 0 || matrix[x-1, y] == 0 ||
+       matrix[x+1, y] == 0 || matrix[x, y-1] == 0 ||
+       matrix[x, y+1] == 0) {
+    matrix[x, y] == 1;
+}
+```
+
+# Alignments
+- All types of alignments are considered harmful
+  - Alignments are hard-to-maintain!
+  - Modifying one line of code shouldn’t require modifying several others
+- Incorrect examples:  
+
+```cs
+public void NotCool()
+{
+	var student          = new Student("Ivan", "Kolev", 21);
+	var studentGrades    = new List<int>() { 2, 3, 4, 5, 6 };
+	var school           = new SMG("Kopernik");
+	var studenstInSchool = new List<Student>();
+}
+
+```
+
+# Keys to being an effective programmer: - Maximizing the portion of a program that you can **safely ignore** - While working on any one section of code - Most practices discussed later propose ways to achieve this important goal
