@@ -476,5 +476,3 @@ public void NotCool()
 }
 
 ```
-
-# Keys to being an effective programmer: - Maximizing the portion of a program that you can **safely ignore** - While working on any one section of code - Most practices discussed later propose ways to achieve this important goal
