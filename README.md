@@ -1,4 +1,6 @@
 # High-Quality-Code
+## Any fool can write code that a computer can understand. Good programmers write code that humans can understand.  
+
 Best conventions for writing high quality code
 
 # What is High-Quality Programming Code?
