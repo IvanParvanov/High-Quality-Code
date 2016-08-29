@@ -116,8 +116,162 @@ Best conventions for writing high quality code
     - High code coverage
   - Passed code reviews and inspections  
 
+#   Code Formatting
+## Why do we need it? How can white spaces and parenthesis help us?
 
-# Keys to being an effective programmer:
-  - Maximizing the portion of a program that you can **safely ignore**
-    - While working on any one section of code
-  - Most practices discussed later propose ways to achieve this important goal
+```cs
+	public   const    string                    FILE_NAME
+	="example.bin"  ;  static void Main   (             ){
+	FileStream   fs=     new FileStream(FILE_NAME,FileMode
+	.   CreateNew)   // Create the writer      for data  .
+	;BinaryWriter w=new BinaryWriter     (    fs      );// Write data to                               Test.data.
+	for(  int i=0;i<11;i++){w.Write((int)i);}w   .Close();
+	fs   .   Close  (  ) // Create the reader    for data.
+	;fs=new FileStream(FILE_NAME,FileMode.            Open
+	,  FileAccess.Read)     ;BinaryReader                r
+	= new BinaryReader(fs);  // Read data from  Test.data.
+	 for (int i = 0; i < 11; i++){ Console      .WriteLine
+	(r.ReadInt32                                       ())
+	;}r       .    Close   (   );  fs .  Close  (  )  ;  }
+
+```
+
+- Good formatting goals
+  - To improve code readability
+  - To improve code maintainability
+- Fundamental principle of code formatting:
+  - Any (consistent) formatting style that follows the above principle is good
+  - Good formatting don’t affect speed, memory use or other aspects of the program 
+  
+## Formatting Blocks in C#
+- Put **{** and **}** alone on a line under the corresponding parent block
+- Indent the block contents by a single [Tab]
+  - Visual Studio will replace the [Tab] with 4 spaces
+- _Example_:
+
+```cs
+if (some condition)
+{
+    // Block contents indented by a single [Tab]
+    // VS will replace the [Tab] with 4 spaces
+}
+```
+
+## Formatting Blocks in JS
+- Put **{** at the end of the block and **}** alone on a line under the corresponding parent block
+- Indent the block contents by a single [Tab]
+  - [tab] or spaces depends on the team style
+- _Example_:
+
+```cs
+if (some condition) {
+    // Block contents indented by a single [Tab]
+    // Choosing between [tab] and spaces depends
+    //  on project formatting style
+}
+```
+
+## Why are Brackets <br /> Obligatory?
+```cs
+x = 3+4 * 2+7;
+```
+```cs
+x = (3 + 4) * (2 + 7);
+```
+
+# Methods
+## Empty Lines between Methods
+- Use empty line for separation between methods:
+
+```cs
+public class Factorial
+{
+  private static ulong CalcFactorial(uint num)
+  {
+    	if (num == 0) return 1;
+    	else return num * CalcFactorial(num - 1);
+  }
+
+  static void Main()
+  {
+    	ulong factorial = CalcFactorial(5);
+			Console.WriteLine(factorial);
+  }
+}
+```
+
+## Methods Indentation
+- Methods should be indented with a single [Tab] from the class body
+- Methods body should be indented with a single [Tab] as well
+
+```cs
+public class Indentation_Example_
+{
+    private int Zero()
+    {
+        return 0;
+    }
+}
+```
+
+## Brackets in Methods Declaration
+- Brackets in the method declaration should be formatted as follows:
+
+```cs
+private static ulong CalcFactorial(uint num)
+```
+
+- Don't  use spaces between the brackets:
+
+```cs
+private static ulong CalcFactorial ( uint num )
+private static ulong CalcFactorial (uint num)
+```
+
+- The same applies for **if**-conditions and **for**-loops:
+
+```cs
+if (condition) { … }
+
+for (int i = 0; i < 10; i++) { … }
+```
+
+## Separating Parameters
+- Separate method parameters by comma followed by a space
+  - Don't put space before the comma
+  - Correct examples:
+```cs
+private void RegisterUser(string username, string password);
+RegisterUser("academy", "s3cr3t!p@ssw0rd");
+```
+
+  - Incorrect examples:
+```cs
+private void RegisterUser(string username,string password)
+private void RegisterUser(string username ,string password)
+private void RegisterUser(string username , string password)
+```
+
+
+<!-- attr: { showInPresentation:true, hasScriptWrapper:true } -->
+## Empty Lines
+- Use an empty line to separate logically related sequences of lines:
+
+```cs
+private List<Report> PrepareReports()
+{
+    List<Report> reports = new List<Report>();
+
+    // Create incomes reports
+    Report incomesSalesReport = PrepareIncomesSalesReport();
+    Report incomesSupportReport = PrepareIncomesSupportReport();
+    reports.Add(incomesSalesReport, incomesSupportReport);
+
+    // Create expenses reports
+    Report expensesPayrollReport = PrepareExpensesPayrollReport();
+    Report expensesMarketingReport = PrepareExpensesMarketingReport();
+    reports.Add(expensesPayrollReport, expensesMarketingReport);
+
+    return reports;
+}
+```
