@@ -476,3 +476,103 @@ public void NotCool()
 }
 
 ```
+
+# Code Documentation and Comments in the Program
+## Revealing the Secrets of Self-Documenting Code
+
+# What is Project Documentation?
+- Consists of documents and information
+  - Both inside the source-code and outside
+- **External documentation**
+  - At a higher level compared to the code
+  - Problem definition, requirements, architecture, design, project plans, test plans. etc.
+- **Internal documentation**
+  - Lower-level – explains a class,method or a piece of code
+  
+# Programming Style
+- Main contributor to code-level documentation
+  - The program structure
+  - Straight-forward, easy-to-read and easily understandable code
+  - Good naming approach
+  - Clear layout and formatting
+  - Clear abstractions
+  - Minimized complexity
+  - Loose coupling and strong cohesion
+
+# Bad Comments – _Example_
+```cs
+public static List<int> FindPrimes(int start, int end)
+{
+    // Create new list of integers
+    List<int> primesList = new List<int>();
+    // Perform a loop from start to end
+    for (int num = start; num <= end; num++)
+    {
+        // Declare boolean variable, initially true
+        bool prime = true;
+        // Perform loop from 2 to sqrt(num)
+        for (int div = 2; div <= Math.Sqrt(num); div++)
+        {
+            // Check if div divides num with no remainder
+            if (num % div == 0)
+            {
+                // We found a divider -> the number is not prime
+                prime = false;
+                // Exit from the loop
+                break;
+            }
+            // Continue with the next loop value
+  }
+
+  // Check if the number is prime
+  if (prime)
+  {
+      // Add the number to the list of primes
+      primesList.Add(num);
+  }
+}
+
+// Return the list of primes
+return primesList;
+}
+
+
+```
+
+# Self-Documenting Code – _Example_
+
+```cs
+public static List<int> FindPrimes(int start, int end)
+{
+  List<int> primesList = new List<int>();
+  for (int num = start; num <= end; num++)
+  {
+    bool isPrime = IsPrime(num);
+    if (isPrime)
+    {
+      primesList.Add(num);
+    }
+  }
+  return primesList;
+}
+```
+
+Good code does not need comments. It is self-explaining.
+
+```cs
+private static bool IsPrime(int num)
+{
+  bool isPrime = true;
+  int maxDivider = Math.Sqrt(num);
+  for (int div = 2; div <= maxDivider; div++)
+  {
+    if (num % div == 0)
+    {
+      // We found a divider -> the number is not prime
+      isPrime = false;
+      break;
+    }
+  }
+  return isPrime;
+}
+```
