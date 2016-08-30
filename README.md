@@ -789,7 +789,7 @@ while (!foundTheTerminator &&
 }
 ```
 
-<div class="fragment balloon" style="top:26.58%; left:67.72%; width:30.28%">Better code &rarr; less comments</div>
+Better code &rarr; less comments
 
 - Focus paragraph comments on the **why** rather than the **how**
 
@@ -812,7 +812,6 @@ if (accountType == AccountType.NewAccount)
   - XML comments in C#
   - JavaDoc in Java, …
 
-
 ## General Guidelines for Higher Level Documentation
 - Describe the design approach to the class
 - Describe limitations, usage assumptions, and so on
@@ -821,16 +820,7 @@ if (accountType == AccountType.NewAccount)
 - Describe the purpose and contents of each file
 - Give the file a name related to its contents
 
-
-
-
-<!-- section start -->
-<!-- attr: {  class:'slide-section', showInPresentation:true, hasScriptWrapper:true } -->
-<!-- # C# XML Documentation Comments -->
-
-
-<!-- attr: { id:'xml-docs', showInPresentation:true, hasScriptWrapper:true } -->
-# <a id="xml-docs"></a>C# XML Documentation
+## <a id="xml-docs"></a>C# XML Documentation
 - In C# you can document the code by XML tags in special comments
   - Directly in the source code
 - For example:
@@ -845,9 +835,7 @@ public class MyClass { }
 - The XML doc comments are not **metadata**
   - Not included in the compiled assembly and not accessible through reflection
 
-
-<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.95em' } -->
-# XML Documentation Tags
+## XML Documentation Tags
 - **&lt;summary>**
   - A summary of the class / method / object
 - **&lt;param>**
@@ -859,10 +847,6 @@ public class MyClass { }
 - **&lt;remarks>**
   - Additional information (remarks)
 
-
-<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.9em' } -->
-<!-- # XML Documentation Tags -->
-
 - **&lt;c>** and **&lt;code>**
   - Gives you a way to indicate code
 - **&lt;see>** and **&lt;seealso>** and cref
@@ -873,8 +857,7 @@ public class MyClass { }
   - Lets you specify which exceptions can be thrown
 - All tags: http://msdn.microsoft.com/en-us/library/5ast78ax.aspx
 
-<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.9em' } -->
-# XML Documentation Example
+## XML Documentation Example
 
 ```cs
 /// <summary>
