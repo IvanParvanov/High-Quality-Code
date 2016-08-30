@@ -23,7 +23,7 @@ Best conventions for writing high quality code
   - Does the software behave correctly?
   - Are the produced results correct?
   - Does the software run fast?
-  - Is the software UI easy-to-use?
+  - Is the software UI easy-to-use?v
   - Is the code secure enough?
 - **Internal quality**
   - Is the code easy to read and understand?
@@ -897,3 +897,13 @@ public static int GetZero()
     return 0;
 }
 ```
+
+## C# XML Documentation
+- Visual Studio will use the XML documentation for autocomplete
+  - Automatically, just use XML docs
+- Compiling the XML documentation:
+  - Compile with **/doc** the to extract the XML doc into an external XML file
+  - Use Sandcastle or other tool to generate CHM / PDF / HTML / other MSDN-style documentation
+    - _Example_: http://www.ewoodruff.us/shfbdocs/
+
+
