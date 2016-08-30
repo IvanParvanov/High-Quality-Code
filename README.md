@@ -480,7 +480,7 @@ public void NotCool()
 # Code Documentation and Comments in the Program
 ## Revealing the Secrets of Self-Documenting Code
 
-# What is Project Documentation?
+## What is Project Documentation?
 - Consists of documents and information
   - Both inside the source-code and outside
 - **External documentation**
@@ -489,7 +489,7 @@ public void NotCool()
 - **Internal documentation**
   - Lower-level – explains a class,method or a piece of code
   
-# Programming Style
+## Programming Style
 - Main contributor to code-level documentation
   - The program structure
   - Straight-forward, easy-to-read and easily understandable code
@@ -499,7 +499,7 @@ public void NotCool()
   - Minimized complexity
   - Loose coupling and strong cohesion
 
-# Bad Comments – _Example_
+## Bad Comments – _Example_
 ```cs
 public static List<int> FindPrimes(int start, int end)
 {
@@ -539,7 +539,7 @@ return primesList;
 
 ```
 
-# Self-Documenting Code – _Example_
+## Self-Documenting Code – _Example_
 
 ```cs
 public static List<int> FindPrimes(int start, int end)
@@ -574,5 +574,326 @@ private static bool IsPrime(int num)
     }
   }
   return isPrime;
+}
+```
+Good methods have good name and are easy to read and understand.
+This comment explain non-obvious details. It does not repeat the code.
+
+## Bad Programming Style – _Example_
+```cs
+for (i = 1; i <= num; i++)
+{
+    meetsCriteria[i] = true;
+}
+for (i = 2; i <= num / 2; i++)
+{
+    j = i + i;
+while (j <= num)
+{
+        meetsCriteria[j] = false;
+        j = j + i;
+    }
+}
+for (i = 1; i <= num; i++)
+{
+    if (meetsCriteria[i])
+    {
+        Console.WriteLine(i + " meets criteria.");
+    }
+}
+```
+
+Uninformative variable names. Crude layout.
+
+## Good Programming Style – _Example_
+
+```cs
+for (primeCandidate = 1; primeCandidate <= num; primeCandidate++)
+{
+    isPrime[primeCandidate] = true;
+}
+
+for (int factor = 2; factor < (num / 2); factor++)
+{
+    int factorableNumber = factor + factor;
+    while (factorableNumber <= num)
+    {
+        isPrime[factorableNumber] = false;
+        factorableNumber = factorableNumber + factor;
+    }
+}
+
+for (primeCandidate = 1; primeCandidate <= num; primeCandidate++)
+{
+    if (isPrime[primeCandidate])
+    {
+        Console.WriteLine(primeCandidate + " is prime.");
+    }
+}
+```
+
+## Self-Documenting Code
+- Code that relies on **good programming style**
+  - To carry major part of the information intended for the documentation
+- Self-documenting code fundamental principles
+
+```
+The best documentation is the code itself.
+```
+
+```
+Make the code self-explainable
+and self-documenting, easy to read and understand.
+```
+
+```
+Do not document bad code, rewrite it!
+```
+
+## Self-Documenting Code Checklist
+- **Classes**
+  - Does the class’s interface present a consistent abstraction?
+  - Does the class’s interface make obvious how you should use the class?
+  - Is the class well named, and does its name describe its purpose?
+  - Can you treat the class as a black box?
+  - Do you reuse instead of repeating code?
+
+- **Methods**
+  - Does each routine’s name describe exactly what the method does?
+  - Does each method perform one well-defined task with minimal dependencies?
+  - 
+- **Data Names**
+  - Are type names descriptive enough to help document data declarations?
+  - Are variables used only for the purpose for which they’re named?
+  - Does naming conventions distinguish among type names, enumerated types,  named constants, local variables, class variables, and global variables?
+  
+- **Others**
+  - Are data types simple so that they minimize complexity?
+  - Are related statements grouped together?
+   
+# "Everything the Compiler Needs to Know is in the Code!"
+
+## Effective Comments
+- Effective comments **do not repeat the code**
+  - They explain it at a higher level and reveal non-obvious details
+- The best software documentation is the source code itself – keep it clean and readable!
+- **Self-documenting code** is self-explainable and does not need comments
+  - Simple design, small well named methods, strong cohesion and loose coupling, simple logic, good variable names, good formatting, …
+
+# Effective Comments – Mistakes
+- Misleading comments
+
+```cs
+// write out the sums 1..n for all n from 1 to num   
+current = 1;
+previous = 0;
+sum = 1;   
+for (int i = 0; i < num; i++)
+{   
+   Console.WriteLine( "Sum = " + sum );   
+   sum = current + previous;   
+   previous = current;   
+   current = sum;
+}
+
+```
+
+Can you guess that sum is equal to the ith Fibonacci number?
+
+- Comments repeating the code:
+
+```cs
+// set product to "base"
+product = base;
+
+// loop from 2 to "num"
+for ( int i = 2; i <= num; i++ )
+{
+   // multiply "base" by "product"  
+   product = product * base;
+}
+Console.WriteLine( "Product = " + product );
+```
+
+- Poor coding style:
+
+```cs
+// compute the square root of Num using
+// the Newton-Raphson approximation
+r = num / 2;
+while (abs(r - (num/r)) > TOLERANCE)
+{
+   r = 0.5 * (r + (num/r) );
+}
+Console.WriteLine( "r = " + r );
+```
+
+- Do not comment bad code, rewrite it 
+ 
+# Key Points for Effective Comments
+- Use commenting styles that don’t break down or discourage modification
+
+```cs
+//  Variable            Meaning
+//  --------            -------
+//  xPos .............. X coordinate position (in meters)
+//  yPos .............. Y coordinate position (in meters)
+//  zPos .............. Z coordinate position (in meters)
+//  radius ............ The radius of the sphere where the
+                        battle ship is located (in meters)
+//  distance .......... The distance from the start position
+                        (in meters)
+```
+
+- The above comments are **unmaintainable**
+
+- Comment the code intent, not implementation details
+
+```cs
+// Scan char by char to find the command-word terminator ($)
+done = false;
+maxLen = inputString.Length;
+i = 0;
+while (!done && (i < maxLen))
+{
+  if (inputString[i] == '$')
+  {
+    done = true;
+  }
+  else
+  {
+    i++;
+  }
+}
+```
+
+- Focus your documentation efforts on the code
+
+```cs
+// Find the command-word terminator
+foundTheTerminator = false;
+maxCommandLength = inputString.Length();
+testCharPosition = 0;
+while (!foundTheTerminator &&
+    (testCharPosition < maxCommandLength))
+{
+  if (inputString[testCharPosition] == COMMAND_WORD_TERMINATOR)
+  {
+    foundTheTerminator = true;
+    terminatorPosition = testCharPosition;
+  }
+  else
+  {
+    testCharPosition = testCharPosition + 1;
+  }
+}
+```
+
+<div class="fragment balloon" style="top:26.58%; left:67.72%; width:30.28%">Better code &rarr; less comments</div>
+
+- Focus paragraph comments on the **why** rather than the **how**
+
+```cs
+// Establish a new account
+if (accountType == AccountType.NewAccount)
+{
+   …
+}
+```
+
+- Use comments to prepare the reader for what is to follow
+- Avoid abbreviations
+
+- Comment anything that gets around an error or an undocumented feature
+  - E.g. **//** **This** **is** **workaround** **for** **bug** **#3712**
+- Justify violations of good programming style
+- Don’t comment tricky code – rewrite it
+- Use built-in features for commenting
+  - XML comments in C#
+  - JavaDoc in Java, …
+
+
+## General Guidelines for Higher Level Documentation
+- Describe the design approach to the class
+- Describe limitations, usage assumptions, and so on
+- Comment the class interface (public methods / properties / events / constructors)
+- Don’t document implementation details in the class interface
+- Describe the purpose and contents of each file
+- Give the file a name related to its contents
+
+
+
+
+<!-- section start -->
+<!-- attr: {  class:'slide-section', showInPresentation:true, hasScriptWrapper:true } -->
+<!-- # C# XML Documentation Comments -->
+
+
+<!-- attr: { id:'xml-docs', showInPresentation:true, hasScriptWrapper:true } -->
+# <a id="xml-docs"></a>C# XML Documentation
+- In C# you can document the code by XML tags in special comments
+  - Directly in the source code
+- For example:
+
+```cs
+/// <summary>
+/// This class performs an important function.
+/// </summary>
+public class MyClass { }
+```
+
+- The XML doc comments are not **metadata**
+  - Not included in the compiled assembly and not accessible through reflection
+
+
+<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.95em' } -->
+# XML Documentation Tags
+- **&lt;summary>**
+  - A summary of the class / method / object
+- **&lt;param>**
+
+    `<param name="name">description</param>`
+  - Describes one of the parameters for a method
+- **&lt;returns>**
+  - A description of the returned value
+- **&lt;remarks>**
+  - Additional information (remarks)
+
+
+<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.9em' } -->
+<!-- # XML Documentation Tags -->
+
+- **&lt;c>** and **&lt;code>**
+  - Gives you a way to indicate code
+- **&lt;see>** and **&lt;seealso>** and cref
+  - Code reference `<seealso cref="TestClass.Main"/>`
+- **&lt;exception>**
+
+    `<exception cref="type">description</exception>`
+  - Lets you specify which exceptions can be thrown
+- All tags: http://msdn.microsoft.com/en-us/library/5ast78ax.aspx
+
+<!-- attr: { showInPresentation:true, hasScriptWrapper:true, style:'font-size:0.9em' } -->
+# XML Documentation Example
+
+```cs
+/// <summary>
+/// The GetZero method. Always returns zero.
+/// </summary>
+/// <example>  
+/// This sample shows how to call the <see cref="GetZero"/> method.
+/// <code>
+/// class TestClass  
+/// {
+///     static int Main()  
+///     {
+///         return GetZero();
+///     }
+/// }
+/// </code>
+/// </example>
+public static int GetZero()
+{
+    return 0;
 }
 ```
